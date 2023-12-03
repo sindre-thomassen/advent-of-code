@@ -20,6 +20,13 @@ export class CalibrationDocument extends Input {
         '7pqrstsixteen',
         281
     );
+    static TEST: CalibrationDocument = new CalibrationDocument(
+        'one\n' +
+        '1\n' +
+        'aonebonec\n' +
+        'aoneb',
+        44
+    )
     static REAL_DEAL: CalibrationDocument = new CalibrationDocument(
         '2xjzgsjzfhzhm1\n' +
         'qhklfjd39rpjxhqtftwopfvrrj2eight\n' +
