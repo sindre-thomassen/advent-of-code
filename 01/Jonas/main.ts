@@ -12,3 +12,5 @@ import {CalibrationDocument} from "./typescript/calibration-document";
 // Day 1
 const day1: CalibrationDecipherer = new CalibrationDecipherer(CalibrationDocument.REAL_DEAL);
 console.log(day1.getDecipheredCalibrationDocumentPart1());
+console.log('Answer:            ', day1.getDecipheredCalibrationDocumentPart2());
+console.log('Predefined answer: ', CalibrationDocument.REAL_DEAL.answer);
