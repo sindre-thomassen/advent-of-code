@@ -5,7 +5,7 @@ export class Input {
 
     protected constructor(value: string, answer?: string | number) {
         this._value = value;
-        this._answer = answer || `No predefined answer. You're on your own pal`;
+        this._answer = answer || `No predefined answer. You're on your own, pal`;
     }
 
     get value() {
