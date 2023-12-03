@@ -6,7 +6,7 @@ then
 	exit 1
 fi
 
-for DAY in {01..24};
+for DAY in {01..25};
 do
 	mkdir $DAY/$1
 	touch $DAY/$1/.gitkeep
