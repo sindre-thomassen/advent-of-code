@@ -8,6 +8,11 @@ if error, run command: npm install ts-node --save-dev
 
 import {CalibrationDecipherer} from "./typescript/calibration-decipherer";
 import {CalibrationDocument} from "./typescript/calibration-document";
+import {ScratchcardPointCounter} from '../../04/Jonas/scratchcard-point-counter';
+import {ScratchcardCollection} from '../../04/Jonas/scratchcard-collection';
+
+const day4: ScratchcardPointCounter = new ScratchcardPointCounter(ScratchcardCollection.REAL_DEAL);
+console.log(day4.getPointsPart1());
 
 const day1: CalibrationDecipherer = new CalibrationDecipherer(CalibrationDocument.REAL_DEAL);
 // console.log(day1.getDecipheredCalibrationDocumentPart1());
