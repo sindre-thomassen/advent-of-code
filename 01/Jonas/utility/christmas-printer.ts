@@ -5,7 +5,7 @@ export interface IChristmasPrinterInput {
 
 export class ChristmasPrinter {
 
-    public print(value: IChristmasPrinterInput, print?: boolean): void {
+    public print(value: IChristmasPrinterInput, print: boolean): void {
         if (print) {
             console.log('         ┌-------------------------------------------------------------------------------------------------┐');
             console.log('         |                                                 ┌------------------╲                ╲   ╱       |');
