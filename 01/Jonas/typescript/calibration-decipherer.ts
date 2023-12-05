@@ -1,4 +1,5 @@
 import {CalibrationDocument} from './calibration-document';
+import {IChristmasPrinterInput} from "../utility/christmas-printer";
 
 export class CalibrationDecipherer {
 
@@ -8,16 +9,24 @@ export class CalibrationDecipherer {
         this.calibrationDocument = calibrationDocument;
     }
 
-    public getDecipheredCalibrationDocumentPart1(): number {
-        return this.getCalibrationLines()
+    public getDecipheredCalibrationDocumentPart1(): IChristmasPrinterInput {
+        const decipheredCalibration: number = this.getCalibrationLines()
             .map((calibrationLine: string) => this.getCalibrationValuePart1(calibrationLine))
             .reduce((sumSoFar: number, calibrationValue: number) => sumSoFar + calibrationValue, 0);
+        return {
+            suggestedAnswer: decipheredCalibration,
+            answer: this.calibrationDocument.answer
+        };
     }
 
-    public getDecipheredCalibrationDocumentPart2(): number {
-        return this.getCalibrationLines()
+    public getDecipheredCalibrationDocumentPart2(): IChristmasPrinterInput {
+        const decipheredCalibration: number = this.getCalibrationLines()
             .map((calibrationLine: string) => this.getCalibrationValuePart2(calibrationLine))
             .reduce((sumSoFar: number, calibrationValue: number) => sumSoFar + calibrationValue, 0);
+        return {
+            suggestedAnswer: decipheredCalibration,
+            answer: this.calibrationDocument.answer
+        };
     }
 
     private getCalibrationLines(): string[] {

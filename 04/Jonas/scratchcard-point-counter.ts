@@ -1,4 +1,5 @@
 import {ScratchcardCollection} from './scratchcard-collection';
+import {IChristmasPrinterInput} from "../../01/Jonas/utility/christmas-printer";
 
 export interface IScratchCard {
     winningNumbers: number[];
@@ -16,11 +17,15 @@ export class ScratchcardPointCounter {
         this.scrambledScratchcard = scratchcardCollection;
     }
 
-    public getPointsPart1(): number {
-        return this.getScratchCards()
+    public getPointsPart1(): IChristmasPrinterInput {
+        const pointsPart1: number = this.getScratchCards()
             .map(scratchCard => this.getNumberOfWinnings(scratchCard))
             .map(winnings => this.getScratchcardPoints(winnings))
             .reduce((sumSoFar: number, points: number) => sumSoFar + points, 0);
+        return {
+            suggestedAnswer: pointsPart1,
+            answer: this.scrambledScratchcard.answer
+        };
     }
 
     private getScratchCards(): IScratchCard[] {
