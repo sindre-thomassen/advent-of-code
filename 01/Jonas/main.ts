@@ -17,7 +17,7 @@ import {PouchOfMaps} from '../../08/Jonas/pouch-of-maps';
 
 const christmasPrinter: ChristmasPrinter = new ChristmasPrinter();
 
-const day8: MapNavigator = new MapNavigator(PouchOfMaps.TEST_PART_1_1);
+const day8: MapNavigator = new MapNavigator(PouchOfMaps.REAL_DEAL);
 christmasPrinter.print(day8.getStepsRequiredPart1(), true);
 
 const day4: ScratchcardPointCounter = new ScratchcardPointCounter(ScratchcardCollection.REAL_DEAL);
