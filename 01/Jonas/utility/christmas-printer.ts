@@ -8,11 +8,11 @@ export class ChristmasPrinter {
     public print(value: IChristmasPrinterInput, print: boolean): void {
         if (print) {
             console.log('         ┌-------------------------------------------------------------------------------------------------┐');
-            console.log('         |                                                 ┌------------------╲                ╲   ╱       |');
-            console.log('         |╲            ^                                   | North Pole 807km  >              ─  *  ─      |');
-            console.log('         |  ╲        ╱   ╲               ^                 └------------------╱                 ╱o╲        |');
-            console.log('         |    ╲    ╱~~~~~~~╲           ╱~~~╲                       |  |                        ╱*~~╲       |');
-            console.log('         |      ╲╱           ╲     ╱╲╱       ╲  ┌-----------------------------------┬----┐    ╱o~*~o╲      |');
+            console.log('         |       *          *                           *  ┌------------------╲      *         ╲   ╱       |');
+            console.log('         |╲            ^                    *              | North Pole 807km  >              ─  *  ─      |');
+            console.log('         |  ╲        ╱   ╲               ^             *   └------------------╱                 ╱o╲        |');
+            console.log('         |    ╲    ╱~~~~~~~╲     *     ╱~~~╲                       |  |     *                  ╱*~~╲    *  |');
+            console.log('         |      ╲╱           ╲     ╱╲╱       ╲  ┌-----------------------------------┬----┐  * ╱o~*~o╲      |');
             console.log(`         |        ╲__     ╱╲   ╲_╱    ╲____    ╲|     ${this.getChristmasCountdown(30)}╰─╮  |   ╱~o~o~~*╲     |`);
             console.log(`         |           ╲__╱    ╲_╱        ╲       | Suggested Answer: ${this.getMessageWithAvailableTrailingSpaces(value.suggestedAnswer, 17)} ╰──|  ╱*~~o~*~~o╲    |`);
             console.log(`         |      ╱╲                        ╲___  | Answer:           ${this.getMessageWithAvailableTrailingSpaces(value.answer, 20)} | ╱~o~~*~o~~*~╲   |`);
