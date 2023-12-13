@@ -6,6 +6,10 @@ export enum LeftRightInstruction {
     RIGHT = 'R'
 }
 
+export interface ICurrentLocation {
+    startDirection: string
+}
+
 export type Direction = {[key: string]: {left: string, right: string}}
 
 export class MapNavigator {
@@ -20,7 +24,26 @@ export class MapNavigator {
         const leftRightInstructions: LeftRightInstruction[] = this.getLeftRightInstructions();
         const directions: Direction = this.getDirections();
         return {
-            suggestedAnswer: this.getStepsTaken('AAA', 'ZZZ', leftRightInstructions, directions),
+            suggestedAnswer: this.getStepsTaken(
+                this.getStartingLocationsPart1(),
+                this.hasReachedGoalPart1,
+                leftRightInstructions,
+                directions
+            ),
+            answer: this.pouchOfMaps.answer
+        };
+    }
+
+    public getStepsRequiredPart2(): IChristmasPrinterInput {
+        const leftRightInstructions: LeftRightInstruction[] = this.getLeftRightInstructions();
+        const directions: Direction = this.getDirections();
+        return {
+            suggestedAnswer: this.getStepsTaken(
+                this.getStartingLocationsPart2(directions),
+                this.hasReachedGoalPart2,
+                leftRightInstructions,
+                directions
+            ),
             answer: this.pouchOfMaps.answer
         };
     }
@@ -47,17 +70,49 @@ export class MapNavigator {
         return directions;
     }
 
-    private getStepsTaken(startDirection: string, endDirection: string, leftRightInstructions: LeftRightInstruction[], directions: Direction): number {
+    private getStepsTaken(currentLocations: ICurrentLocation[], hasReachedGoal: (currentLocation: string) => boolean, leftRightInstructions: LeftRightInstruction[], directions: Direction): number {
         let stepCounter: number = 0;
         let instructionIndex: number = 0;
-        let nextDirection: string = startDirection;
-        while (nextDirection !== endDirection) {
+        let allHasReachedGoal: boolean = false;
+        while (!allHasReachedGoal) {
             stepCounter++;
-            nextDirection = leftRightInstructions[instructionIndex] === LeftRightInstruction.LEFT
-                ? directions[nextDirection].left
-                : directions[nextDirection].right;
+
+            for (const currentLocation of currentLocations) {
+                currentLocation.startDirection = leftRightInstructions[instructionIndex] === LeftRightInstruction.LEFT
+                    ? directions[currentLocation.startDirection].left
+                    : directions[currentLocation.startDirection].right;
+            }
+
+            allHasReachedGoal = currentLocations
+                .filter((currentLocation: ICurrentLocation) => hasReachedGoal(currentLocation.startDirection)).length === currentLocations.length;
             instructionIndex = instructionIndex + 1 === leftRightInstructions.length ? 0 : instructionIndex + 1;
         }
         return stepCounter;
+    }
+
+    private getStartingLocationsPart1(): ICurrentLocation[] {
+        return [{
+            startDirection: 'AAA'
+        }];
+    }
+
+    private getStartingLocationsPart2(directions: Direction): ICurrentLocation[] {
+        const startingLocations: ICurrentLocation[] = [];
+        for (const directionKey in directions) {
+            if (directionKey[2] === 'A') {
+                startingLocations.push({
+                    startDirection: directionKey
+                });
+            }
+        }
+        return startingLocations;
+    }
+
+    private hasReachedGoalPart1(currentLocation: string): boolean {
+        return currentLocation === 'ZZZ';
+    }
+
+    private hasReachedGoalPart2(currentLocation: string): boolean {
+        return currentLocation.length === 3 && currentLocation[2] === 'Z';
     }
 }

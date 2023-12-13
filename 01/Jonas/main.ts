@@ -18,7 +18,8 @@ import {PouchOfMaps} from '../../08/Jonas/pouch-of-maps';
 const christmasPrinter: ChristmasPrinter = new ChristmasPrinter();
 
 const day8: MapNavigator = new MapNavigator(PouchOfMaps.REAL_DEAL);
-christmasPrinter.print(day8.getStepsRequiredPart1(), true);
+christmasPrinter.print(day8.getStepsRequiredPart1(), false);
+// christmasPrinter.print(day8.getStepsRequiredPart2(), true); // probably working, just too slow
 
 const day4: ScratchcardPointCounter = new ScratchcardPointCounter(ScratchcardCollection.REAL_DEAL);
 christmasPrinter.print(day4.getPointsPart1(), false);
