@@ -2,7 +2,10 @@ package util.string_formatter;
 
 public class Message {
 
-    private static final String stringFormattingPlaceholder = "%s";
+    public static final String STRING_FORMATTING_PLACEHOLDER = "%s";
+    private static final String TAB = "\t";
+    private static final String NEW_LINE = "\n";
+
     private String message;
 
     private Message(String message) {
@@ -19,31 +22,17 @@ public class Message {
     }
 
     public Message addTab(int count) {
-        this.message += "\t".repeat(count);
+        this.message += Message.TAB.repeat(count);
         return this;
     }
 
     public Message newLine() {
-        this.message += System.lineSeparator();
+        this.message += Message.NEW_LINE;
         return this;
     }
 
-    public Message overwriteFromPlaceholder(String replacement) {
-        int index = this.message.indexOf(stringFormattingPlaceholder);
-        this.message = new StringBuilder(this.message)
-                .delete(index, index + (stringFormattingPlaceholder.length() - 1) + replacement.length())
-                .insert(index, replacement + " ".repeat(stringFormattingPlaceholder.length() - 1))
-                .toString();
-        return this;
-    }
-
-    public Message overwriteSymmetricallyFromPlaceholder(String replacement) {
-        int placeholderIndex = this.message.indexOf(stringFormattingPlaceholder);
-        int deleteAndInsertIndex = placeholderIndex - (int) Math.round(replacement.length() / 2.0) + 1;
-        this.message = new StringBuilder(this.message)
-                .delete(deleteAndInsertIndex, deleteAndInsertIndex + (stringFormattingPlaceholder.length() - 1) + replacement.length())
-                .insert(deleteAndInsertIndex, replacement + " ".repeat(stringFormattingPlaceholder.length() - 1))
-                .toString();
+    public Message format(MessageFormatter messageFormatter, String replacement) {
+        this.message = messageFormatter.format(this.message, Message.STRING_FORMATTING_PLACEHOLDER, replacement);
         return this;
     }
 
