@@ -6,6 +6,8 @@ import util.time.DateOfYear;
 import util.time.Time;
 
 import java.time.temporal.ChronoUnit;
+import java.util.Comparator;
+import java.util.stream.Stream;
 
 public abstract class ChristmasPrinter {
 
@@ -25,11 +27,14 @@ public abstract class ChristmasPrinter {
 
     private String getFormattedDesign() {
         Message design = getDesign();
-        return design
-                .format(getChristmasCountdownFormatter(), getChristmasCountdown())
-                .format(getAnswerFormatter(), answer)
-                .format(getExpectedAnswerFormatter(), expectedAnswer)
-                .toString();
+        Stream.of(
+                getChristmasCountdownDesignTask(),
+                getAnswerDesignTask(),
+                getExpectedAnswerDesignTask()
+        )
+                .sorted(Comparator.comparingInt(ChristmasPrinterDesignTask::order))
+                .forEach(designTask -> design.format(designTask.replacePlaceholderFormatter(), designTask.value()));
+        return design.toString();
     }
 
     protected abstract Message getDesign();
@@ -45,6 +50,30 @@ public abstract class ChristmasPrinter {
     protected abstract int getAnswerOrder();
 
     protected abstract int getExpectedAnswerOrder();
+
+    private ChristmasPrinterDesignTask getChristmasCountdownDesignTask() {
+        return new ChristmasPrinterDesignTask(
+                getChristmasCountdown(),
+                getChristmasCountdownOrder(),
+                getChristmasCountdownFormatter()
+        );
+    }
+
+    private ChristmasPrinterDesignTask getAnswerDesignTask() {
+        return new ChristmasPrinterDesignTask(
+                answer,
+                getAnswerOrder(),
+                getAnswerFormatter()
+        );
+    }
+
+    private ChristmasPrinterDesignTask getExpectedAnswerDesignTask() {
+        return new ChristmasPrinterDesignTask(
+                expectedAnswer,
+                getExpectedAnswerOrder(),
+                getExpectedAnswerFormatter()
+        );
+    }
 
     private String getChristmasCountdown() {
         long daysUntilChristmas = getDaysUntilChristmas();
