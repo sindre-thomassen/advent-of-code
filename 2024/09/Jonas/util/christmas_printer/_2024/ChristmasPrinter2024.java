@@ -2,10 +2,10 @@ package util.christmas_printer._2024;
 
 import util.christmas_printer.AdventOfCodeAnswer;
 import util.christmas_printer.ChristmasPrinter;
-import util.string_formatter.CenteredOverwriteFormatter;
+import util.string_formatter.replace_placeholder_formatter.CenteredOverwriteFormatter;
 import util.string_formatter.Message;
-import util.string_formatter.MessageFormatter;
-import util.string_formatter.RightOverwriteFormatter;
+import util.string_formatter.replace_placeholder_formatter.ReplacePlaceholderFormatter;
+import util.string_formatter.replace_placeholder_formatter.RightOverwriteFormatter;
 import util.time.DateOfYear;
 import util.time.Month;
 
@@ -18,25 +18,25 @@ public class ChristmasPrinter2024 extends ChristmasPrinter {
     @Override
     protected Message getDesign() {
         return Message.create()
-                .addText("┌--------------------------------┐").newLine()
-                .addText("|---            %s            ---|").newLine()
-                .addText("|--- Answer: %s               ---|").newLine()
-                .addText("|--- Expected answer %s       ---|").newLine()
-                .addText("└--------------------------------┘");
+                .appendText("┌--------------------------------┐").appendNewLine()
+                .appendText("|---            %s            ---|").appendNewLine()
+                .appendText("|--- Answer: %s               ---|").appendNewLine()
+                .appendText("|--- Expected answer %s       ---|").appendNewLine()
+                .appendText("└--------------------------------┘");
     }
 
     @Override
-    protected MessageFormatter getChristmasCountdownFormatter() {
+    protected ReplacePlaceholderFormatter getChristmasCountdownFormatter() {
         return new CenteredOverwriteFormatter();
     }
 
     @Override
-    protected MessageFormatter getAnswerFormatter() {
+    protected ReplacePlaceholderFormatter getAnswerFormatter() {
         return new RightOverwriteFormatter();
     }
 
     @Override
-    protected MessageFormatter getExpectedAnswerFormatter() {
+    protected ReplacePlaceholderFormatter getExpectedAnswerFormatter() {
         return new RightOverwriteFormatter();
     }
 

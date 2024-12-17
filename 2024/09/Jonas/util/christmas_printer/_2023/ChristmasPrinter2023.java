@@ -2,10 +2,10 @@ package util.christmas_printer._2023;
 
 import util.christmas_printer.AdventOfCodeAnswer;
 import util.christmas_printer.ChristmasPrinter;
-import util.string_formatter.CenteredOverwriteFormatter;
+import util.string_formatter.replace_placeholder_formatter.CenteredOverwriteFormatter;
 import util.string_formatter.Message;
-import util.string_formatter.MessageFormatter;
-import util.string_formatter.RightOverwriteFormatter;
+import util.string_formatter.replace_placeholder_formatter.ReplacePlaceholderFormatter;
+import util.string_formatter.replace_placeholder_formatter.RightOverwriteFormatter;
 import util.time.DateOfYear;
 import util.time.Month;
 
@@ -20,34 +20,34 @@ public class ChristmasPrinter2023 extends ChristmasPrinter {
         int tabs = 10;
 
         return Message.create()
-                .addTab(tabs).addText("┌-------------------------------------------------------------------------------------------------┐").newLine()
-                .addTab(tabs).addText("|       *          *                           *  ┌------------------╲      *         ╲   ╱       |").newLine()
-                .addTab(tabs).addText("|╲            ^                    *              | North Pole 807km  >              ─  *  ─      |").newLine()
-                .addTab(tabs).addText("|  ╲        ╱   ╲               ^             *   └------------------╱                 ╱o╲        |").newLine()
-                .addTab(tabs).addText("|    ╲    ╱~~~~~~~╲     *     ╱~~~╲                       |  |     *                  ╱*~~╲    *  |").newLine()
-                .addTab(tabs).addText("|      ╲╱           ╲     ╱╲╱       ╲  ┌-----------------------------------┬----┐  * ╱o~*~o╲      |").newLine()
-                .addTab(tabs).addText("|        ╲__     ╱╲   ╲_╱    ╲____    ╲|                   %s              ╰─╮  |   ╱~o~o~~*╲     |").newLine()
-                .addTab(tabs).addText("|           ╲__╱    ╲_╱        ╲       |  Expected Answer: %s                ╰──|  ╱*~~o~*~~o╲    |").newLine()
-                .addTab(tabs).addText("|      ╱╲                        ╲___  |  Answer:          %s                   | ╱~o~~*~o~~*~╲   |").newLine()
-                .addTab(tabs).addText("|     ╱˷˷╲    ,_____,     ╭╮╭───────╯  └----------------------------------------┘╱o~*~~o~*~~o~~╲  |").newLine()
-                .addTab(tabs).addText("|   ╭──||────/_╲_____╲────╯╰╯                             |  |               ┌─┬─┐`˜`˜|˜˜˜|˜`˜´┌┬┐|").newLine()
-                .addTab(tabs).addText("|   ╰────    |_|_____|                                    |  |               └─┴┬┼┐┌─┬┴┐ ┌┼┐┌─┬┴┤┘|").newLine()
-                .addTab(tabs).addText("|                                                        ~~~~~~                 └┴┘└─┴─┘~└┴┘└─┴─┘ |").newLine()
-                .addTab(tabs).addText("└-------------------------------------------------------------------------------------------------┘");
+                .appendTab(tabs).appendText("┌-------------------------------------------------------------------------------------------------┐").appendNewLine()
+                .appendTab(tabs).appendText("|       *          *                           *  ┌------------------╲      *         ╲   ╱       |").appendNewLine()
+                .appendTab(tabs).appendText("|╲            ^                    *              | North Pole 807km  >              ─  *  ─      |").appendNewLine()
+                .appendTab(tabs).appendText("|  ╲        ╱   ╲               ^             *   └------------------╱                 ╱o╲        |").appendNewLine()
+                .appendTab(tabs).appendText("|    ╲    ╱~~~~~~~╲     *     ╱~~~╲                       |  |     *                  ╱*~~╲    *  |").appendNewLine()
+                .appendTab(tabs).appendText("|      ╲╱           ╲     ╱╲╱       ╲  ┌-----------------------------------┬----┐  * ╱o~*~o╲      |").appendNewLine()
+                .appendTab(tabs).appendText("|        ╲__     ╱╲   ╲_╱    ╲____    ╲|                   %s              ╰─╮  |   ╱~o~o~~*╲     |").appendNewLine()
+                .appendTab(tabs).appendText("|           ╲__╱    ╲_╱        ╲       |  Expected Answer: %s                ╰──|  ╱*~~o~*~~o╲    |").appendNewLine()
+                .appendTab(tabs).appendText("|      ╱╲                        ╲___  |  Answer:          %s                   | ╱~o~~*~o~~*~╲   |").appendNewLine()
+                .appendTab(tabs).appendText("|     ╱˷˷╲    ,_____,     ╭╮╭───────╯  └----------------------------------------┘╱o~*~~o~*~~o~~╲  |").appendNewLine()
+                .appendTab(tabs).appendText("|   ╭──||────/_╲_____╲────╯╰╯                             |  |               ┌─┬─┐`˜`˜|˜˜˜|˜`˜´┌┬┐|").appendNewLine()
+                .appendTab(tabs).appendText("|   ╰────    |_|_____|                                    |  |               └─┴┬┼┐┌─┬┴┐ ┌┼┐┌─┬┴┤┘|").appendNewLine()
+                .appendTab(tabs).appendText("|                                                        ~~~~~~                 └┴┘└─┴─┘~└┴┘└─┴─┘ |").appendNewLine()
+                .appendTab(tabs).appendText("└-------------------------------------------------------------------------------------------------┘");
     }
 
     @Override
-    protected MessageFormatter getChristmasCountdownFormatter() {
+    protected ReplacePlaceholderFormatter getChristmasCountdownFormatter() {
         return new CenteredOverwriteFormatter();
     }
 
     @Override
-    protected MessageFormatter getAnswerFormatter() {
+    protected ReplacePlaceholderFormatter getAnswerFormatter() {
         return new RightOverwriteFormatter();
     }
 
     @Override
-    protected MessageFormatter getExpectedAnswerFormatter() {
+    protected ReplacePlaceholderFormatter getExpectedAnswerFormatter() {
         return new RightOverwriteFormatter();
     }
 

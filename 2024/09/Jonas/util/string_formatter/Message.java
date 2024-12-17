@@ -1,12 +1,18 @@
 package util.string_formatter;
 
+import util.string_formatter.append_custom_text_formatter.AppendTextFormatter;
+import util.string_formatter.append_predefined_text_formatter.AppendNewLineFormatter;
+import util.string_formatter.append_predefined_text_formatter.AppendTabFormatter;
+import util.string_formatter.replace_placeholder_formatter.ReplacePlaceholderFormatter;
+
 public class Message {
 
     public static final String STRING_FORMATTING_PLACEHOLDER = "%s";
-    private static final String TAB = "\t";
-    private static final String NEW_LINE = "\n";
 
     private String message;
+    private static final AppendTextFormatter appendTextFormatter = new AppendTextFormatter();
+    private static final AppendTabFormatter appendTabFormatter = new AppendTabFormatter();
+    private static final AppendNewLineFormatter appendNewLineFormatter = new AppendNewLineFormatter();
 
     private Message(String message) {
         this.message = message;
@@ -16,23 +22,23 @@ public class Message {
         return new Message("");
     }
 
-    public Message addText(String string) {
-        this.message += string;
+    public Message appendText(String appendText) {
+        this.message = appendTextFormatter.format(this.message, appendText);
         return this;
     }
 
-    public Message addTab(int count) {
-        this.message += Message.TAB.repeat(count);
+    public Message appendTab(int repetitions) {
+        this.message = appendTabFormatter.format(this.message, repetitions);
         return this;
     }
 
-    public Message newLine() {
-        this.message += Message.NEW_LINE;
+    public Message appendNewLine() {
+        this.message = appendNewLineFormatter.format(this.message);
         return this;
     }
 
-    public Message format(MessageFormatter messageFormatter, String replacement) {
-        this.message = messageFormatter.format(this.message, Message.STRING_FORMATTING_PLACEHOLDER, replacement);
+    public Message format(ReplacePlaceholderFormatter replacePlaceholderFormatter, String replacement) {
+        this.message = replacePlaceholderFormatter.format(this.message, Message.STRING_FORMATTING_PLACEHOLDER, replacement);
         return this;
     }
 

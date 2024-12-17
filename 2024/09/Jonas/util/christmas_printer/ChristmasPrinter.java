@@ -1,7 +1,7 @@
 package util.christmas_printer;
 
 import util.string_formatter.Message;
-import util.string_formatter.MessageFormatter;
+import util.string_formatter.replace_placeholder_formatter.ReplacePlaceholderFormatter;
 import util.time.DateOfYear;
 import util.time.Time;
 
@@ -34,11 +34,11 @@ public abstract class ChristmasPrinter {
 
     protected abstract Message getDesign();
 
-    protected abstract MessageFormatter getChristmasCountdownFormatter();
+    protected abstract ReplacePlaceholderFormatter getChristmasCountdownFormatter();
 
-    protected abstract MessageFormatter getAnswerFormatter();
+    protected abstract ReplacePlaceholderFormatter getAnswerFormatter();
 
-    protected abstract MessageFormatter getExpectedAnswerFormatter();
+    protected abstract ReplacePlaceholderFormatter getExpectedAnswerFormatter();
 
     protected abstract int getChristmasCountdownOrder();
 
