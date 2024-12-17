@@ -18,11 +18,11 @@ public class ChristmasPrinter2024 extends ChristmasPrinter {
     @Override
     protected Message getDesign() {
         return Message.create()
-                .appendText("┌--------------------------------┐").appendNewLine()
-                .appendText("|---            %s            ---|").appendNewLine()
-                .appendText("|--- Answer: %s               ---|").appendNewLine()
-                .appendText("|--- Expected answer %s       ---|").appendNewLine()
-                .appendText("└--------------------------------┘");
+                .appendText("┌----------------------------------------┐").appendNewLine()
+                .appendText("|---                %s                ---|").appendNewLine()
+                .appendText("|--- Answer: %s                       ---|").appendNewLine()
+                .appendText("|--- Expected answer: %s              ---|").appendNewLine()
+                .appendText("└----------------------------------------┘");
     }
 
     @Override
