@@ -1,5 +1,8 @@
 package util.string_formatter.replace_placeholder_formatter;
 
 public interface ReplacePlaceholderFormatter {
-    String format(String text, String formattingPlaceholder, String replacement);
+
+    String STRING_FORMATTING_PLACEHOLDER = "%s";
+
+    String format(String text, String replacement);
 }

@@ -7,8 +7,6 @@ import util.string_formatter.replace_placeholder_formatter.ReplacePlaceholderFor
 
 public class Message {
 
-    public static final String STRING_FORMATTING_PLACEHOLDER = "%s";
-
     private String message;
     private static final AppendTextFormatter appendTextFormatter = new AppendTextFormatter();
     private static final AppendTabFormatter appendTabFormatter = new AppendTabFormatter();
@@ -38,7 +36,7 @@ public class Message {
     }
 
     public Message format(ReplacePlaceholderFormatter replacePlaceholderFormatter, String replacement) {
-        this.message = replacePlaceholderFormatter.format(this.message, Message.STRING_FORMATTING_PLACEHOLDER, replacement);
+        this.message = replacePlaceholderFormatter.format(this.message, replacement);
         return this;
     }
 
