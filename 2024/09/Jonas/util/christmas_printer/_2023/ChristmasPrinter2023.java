@@ -22,7 +22,7 @@ public class ChristmasPrinter2023 extends ChristmasPrinter {
         return Message.create()
                 .appendTab(tabs).appendText("┌-------------------------------------------------------------------------------------------------┐").appendNewLine()
                 .appendTab(tabs).appendText("|       *          *                           *  ┌------------------╲      *         ╲   ╱       |").appendNewLine()
-                .appendTab(tabs).appendText("|╲            ^                    *              | North Pole 7km    >              ─  *  ─      |").appendNewLine()
+                .appendTab(tabs).appendText("|╲            ^                    *              | North Pole 70km   >              ─  *  ─      |").appendNewLine()
                 .appendTab(tabs).appendText("|  ╲        ╱   ╲               ^             *   └------------------╱                 ╱o╲        |").appendNewLine()
                 .appendTab(tabs).appendText("|    ╲    ╱~~~~~~~╲     *     ╱~~~╲                       |  |     *                  ╱*~~╲    *  |").appendNewLine()
                 .appendTab(tabs).appendText("|      ╲╱           ╲     ╱╲╱       ╲  ┌-----------------------------------┬----┐  * ╱o~*~o╲      |").appendNewLine()
