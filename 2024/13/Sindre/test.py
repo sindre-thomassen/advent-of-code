@@ -23,7 +23,7 @@ class TestDay13(unittest.TestCase):
 
                 self.claw_machines.append(ClawMachine(specs))
                 self.fucked_claw_machines.append(ClawMachine(specs, fucked_units=True))
-+
+
                 line = file.readline()
 
         self.truths = [280, 0, 200, 0]
@@ -31,10 +31,13 @@ class TestDay13(unittest.TestCase):
 
     def test_clawmachine(self):
         for claw_machine, truth in zip(self.claw_machines, self.truths):
-            self.assertEqual(claw_machine.winable, truth > 0)
-            self.assertEqual(claw_machine.cheapest_win(), truth)
+            self.assertEqual(claw_machine.cheapest_win_2(), truth)
 
-    # def test_fucked_up_clawmachine(self):
-    #     for claw_machine, truth in zip(self.fucked_claw_machines, self.fucked_truths):
-    #         self.assertEqual(claw_machine._win_is_possible(), truth > 0)
-            # self.assertEqual(claw_machine.cheapest_win(), truth)
+    def test_fucked_up_clawmachine(self):
+        i = 0
+        for claw_machine, truth in zip(self.fucked_claw_machines, self.fucked_truths):
+            print(f"Claw machine #{(i := i+1)}", claw_machine)
+            if truth == 0:
+                self.assertEqual(claw_machine.cheapest_win_2(), truth)
+            else:
+                self.assertGreater(claw_machine.cheapest_win_2(), 0)
