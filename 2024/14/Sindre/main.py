@@ -11,7 +11,7 @@ class BathroomGuard:
         self.position = np.array(position)
 
     def move(self, time=1):
-        self.position = self._starting_position + self._velocity * time
+        self.position = self.position + self._velocity * time
 
     def reset_position(self):
         self.position = self._starting_position
@@ -86,28 +86,23 @@ if __name__ == '__main__':
 
         print(q1 * q2 * q3 * q4)
 
+    system.reset_guards()
 
-    fig, ax = plt.subplots(1, 1)
+    cur = float('inf')
+    unchanged = 0
+    s = 0
+    i = 0
 
-    X, Y = [], []
-    for pos in system.get_guard_positions():
-        X.append(pos[0])
-        Y.append(pos[1])
+    while unchanged < 5000:
+        positions = np.array(system.get_guard_positions())
+        if np.var(positions) < cur:
+            cur = np.var(positions)
+            unchanged = 0
+            s = i
+        else:
+            unchanged += 1
 
-    scat = ax.scatter(Y, X, s=2)
-
-    def animate(i):
         system.move_guards()
+        i += 1
 
-        X, Y = [], []
-
-        for pos in system.get_guard_positions():
-            X.append(pos[0])
-            Y.append(pos[1])
-
-        scat.set_offsets(np.c_[Y, X])
-
-        return scat,
-
-    ani = FuncAnimation(fig, animate, interval=1, repeat=True, frames=1000000)
-    plt.show()
+    print(unchanged, cur, f"Wait for {s} seconds")
