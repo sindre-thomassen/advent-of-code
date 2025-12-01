@@ -12,8 +12,8 @@ public class TxtReader implements AutoCloseable {
         readNextLine();
     }
 
-    public String getNextLine() throws Exception {
-        if (nextLine == null) {
+    protected String getNextLine() throws Exception {
+        if (!hasNextLine()) {
             return null;
         }
         String lineToReturn = nextLine;
