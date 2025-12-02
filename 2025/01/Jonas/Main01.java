@@ -1,46 +1,33 @@
-import util.christmas_printer.AdventOfCodeAnswer;
-
 public class Main01 {
     public static void main(String[] args) {
-//        test();
-//        part1();
-        part2();
+        ChristmasPrinter2025 christmasPrinter = new ChristmasPrinter2025();
+
+//        christmasPrinter.print(getTestAnswer(), 3);
+        christmasPrinter.print(getPart1Answer(), 989);
+//        christmasPrinter.print(getPart2Answer());
     }
 
-    public static void test() {
+    public static int getTestAnswer() {
         SafeDial safeDial = new SafeDial(50, 0, 99, 0);
 
-        try (RotationReader rotationReader = new RotationReader("2025/01/Jonas", "InputTestDay1")) {
-            while (rotationReader.hasNextLine()) {
-                RotationInstruction rotationInstruction = rotationReader.getNextRotation();
-                safeDial.rotate(rotationInstruction);
-            }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        for (RotationInstruction rotationInstruction : new RotationReader("2025/01/Jonas", "InputTestDay1")) {
+            safeDial.rotate(rotationInstruction);
         }
 
-        AdventOfCodeAnswer adventOfCodeAnswer = new AdventOfCodeAnswer(String.valueOf(safeDial.getNumberCount()), "3");
-        ChristmasPrinter2025 christmasPrinter = new ChristmasPrinter2025(adventOfCodeAnswer);
-        christmasPrinter.print();
+        return safeDial.getNumberCount();
     }
 
-    public static void part1() {
+    public static int getPart1Answer() {
         SafeDial safeDial = new SafeDial(50, 0, 99, 0);
 
-        try (RotationReader rotationReader = new RotationReader("2025/01/Jonas", "Input1Day1")) {
-            while (rotationReader.hasNextLine()) {
-                RotationInstruction rotationInstruction1 = rotationReader.getNextRotation();
-                safeDial.rotate(rotationInstruction1);
-            }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        for (RotationInstruction rotationInstruction : new RotationReader("2025/01/Jonas", "Input1Day1")) {
+            safeDial.rotate(rotationInstruction);
         }
 
-        AdventOfCodeAnswer adventOfCodeAnswer = new AdventOfCodeAnswer(String.valueOf(safeDial.getNumberCount()), "?");
-        ChristmasPrinter2025 christmasPrinter = new ChristmasPrinter2025(adventOfCodeAnswer);
-        christmasPrinter.print();
+        return safeDial.getNumberCount();
     }
 
-    public static void part2() {
+    public static int getPart2Answer() {
+        return 0;
     }
 }

@@ -1,4 +1,3 @@
-import util.christmas_printer.AdventOfCodeAnswer;
 import util.christmas_printer.ChristmasPrinter;
 import util.string_formatter.Message;
 import util.string_formatter.replace_placeholder_formatter.CenteredOverwriteFormatter;
@@ -9,8 +8,8 @@ import util.time.Month;
 
 public class ChristmasPrinter2025 extends ChristmasPrinter {
 
-    public ChristmasPrinter2025(AdventOfCodeAnswer adventOfCodeAnswer) {
-        super(adventOfCodeAnswer, new DateOfYear(Month.DECEMBER, 24));
+    public ChristmasPrinter2025() {
+        super(new DateOfYear(Month.DECEMBER, 24));
     }
 
     @Override

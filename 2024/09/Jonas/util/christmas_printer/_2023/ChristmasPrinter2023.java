@@ -1,6 +1,5 @@
 package util.christmas_printer._2023;
 
-import util.christmas_printer.AdventOfCodeAnswer;
 import util.christmas_printer.ChristmasPrinter;
 import util.string_formatter.replace_placeholder_formatter.CenteredOverwriteFormatter;
 import util.string_formatter.Message;
@@ -11,8 +10,8 @@ import util.time.Month;
 
 public class ChristmasPrinter2023 extends ChristmasPrinter {
 
-    public ChristmasPrinter2023(AdventOfCodeAnswer adventOfCodeAnswer) {
-        super(adventOfCodeAnswer, new DateOfYear(Month.DECEMBER, 24));
+    public ChristmasPrinter2023() {
+        super(new DateOfYear(Month.DECEMBER, 24));
     }
 
     @Override
