@@ -1,18 +1,16 @@
-import java.io.IOException;
+public class RotationReader extends TxtReader<RotationInstruction> {
 
-public class RotationReader extends TxtReader {
-
-    public RotationReader(String path, String fileName) throws IOException {
+    public RotationReader(String path, String fileName) {
         super(path, fileName);
     }
 
-    public RotationInstruction getNextRotation() throws Exception {
-        String readLine = getNextLine();
-        if (readLine == null) {
-            return null;
+    @Override
+    protected RotationInstruction processLine(String line) {
+        if (line == null) {
+            throw new NullPointerException("Null line");
         }
 
-        return new RotationInstruction(getDirection(readLine), getSteps(readLine));
+        return new RotationInstruction(getDirection(line), getSteps(line));
     }
 
     private Direction getDirection(String line) {
