@@ -1,4 +1,5 @@
-import util.christmas_printer.AdventOfCodeAnswer;
+package util;
+
 import util.christmas_printer.ChristmasPrinter;
 import util.string_formatter.Message;
 import util.string_formatter.replace_placeholder_formatter.CenteredOverwriteFormatter;
@@ -9,8 +10,8 @@ import util.time.Month;
 
 public class ChristmasPrinter2025 extends ChristmasPrinter {
 
-    public ChristmasPrinter2025(AdventOfCodeAnswer adventOfCodeAnswer) {
-        super(adventOfCodeAnswer, new DateOfYear(Month.DECEMBER, 24));
+    public ChristmasPrinter2025() {
+        super(new DateOfYear(Month.DECEMBER, 24));
     }
 
     @Override
@@ -34,8 +35,8 @@ public class ChristmasPrinter2025 extends ChristmasPrinter {
                 .appendTab(margin).appendText("    ,-'    (___)                          ┍┯┯┯┯┑              (___)`-.           ").appendNewLine()
                 .appendTab(margin).appendText("    ,-________________________________________________________________`.         ").appendNewLine()
                 .appendTab(margin).appendText("    |~~|  ____________               %s             _______/o╲___   |~~|         ").appendNewLine()
-                .appendTab(margin).appendText("    |_||  ||____|____|    Expected: %s              |___|_/ /,╲__|  ||_|         ").appendNewLine()
-                .appendTab(margin).appendText("    |__|  |___|____|_|    Actual:   %s              |_|__/ /,,,╲||  ||_|         ").appendNewLine()
+                .appendTab(margin).appendText("    |_||  ||____|____|    Actual:   %s              |___|_/ /,╲__|  ||_|         ").appendNewLine()
+                .appendTab(margin).appendText("    |__|  |___|____|_|    Expected: %s              |_|__/ /,,,╲||  ||_|         ").appendNewLine()
                 .appendTab(margin).appendText("    |_||__||____|____|______________________________|___|╲/,,,,,╲|__|__|         ").appendNewLine()
                 .appendTab(margin).appendText("    |____|____|____|____|____|____|____|____|____|____|___╲,,,,,,╲___|_|         ").appendNewLine()
                 .appendTab(margin).appendText("    |_|____|__I####I..........  /%%%%%%%%%%%╲ ..........I##╲,,,,( )|___|         ").appendNewLine()

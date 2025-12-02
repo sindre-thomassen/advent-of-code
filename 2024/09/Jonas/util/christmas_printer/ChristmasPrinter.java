@@ -11,18 +11,40 @@ import java.util.stream.Stream;
 
 public abstract class ChristmasPrinter {
 
-    private final String answer;
-    private final String expectedAnswer;
+    private AdventOfCodeAnswer adventOfCodeAnswer;
     private final DateOfYear christmasDate;
+    private final String defaultAnswer = "?";
 
-    protected ChristmasPrinter(AdventOfCodeAnswer adventOfCodeAnswer, DateOfYear christmasDate) {
-        this.answer = adventOfCodeAnswer.answer();
-        this.expectedAnswer = adventOfCodeAnswer.expectedAnswer();
+    protected ChristmasPrinter(DateOfYear christmasDate) {
+        this.adventOfCodeAnswer = new AdventOfCodeAnswer(defaultAnswer, defaultAnswer);
         this.christmasDate = christmasDate;
+    }
+
+    public void print(int answer, int expected) {
+        setAdventOfCodeAnswer(answer, expected);
+        print();
+    }
+
+    public void print(int answer) {
+        setAdventOfCodeAnswer(answer);
+        print();
+    }
+
+    public void print(AdventOfCodeAnswer adventOfCodeAnswer) {
+        this.adventOfCodeAnswer = adventOfCodeAnswer;
+        print();
     }
 
     public void print() {
         System.out.println(getFormattedDesign());
+    }
+
+    private void setAdventOfCodeAnswer(int answer) {
+        this.adventOfCodeAnswer = new AdventOfCodeAnswer(String.valueOf(answer), defaultAnswer);
+    }
+
+    public void setAdventOfCodeAnswer(int answer, int expected) {
+        this.adventOfCodeAnswer = new AdventOfCodeAnswer(String.valueOf(answer), String.valueOf(expected));
     }
 
     private String getFormattedDesign() {
@@ -61,7 +83,7 @@ public abstract class ChristmasPrinter {
 
     private ChristmasPrinterDesignTask getAnswerDesignTask() {
         return new ChristmasPrinterDesignTask(
-                answer,
+                adventOfCodeAnswer.answer(),
                 getAnswerOrder(),
                 getAnswerFormatter()
         );
@@ -69,7 +91,7 @@ public abstract class ChristmasPrinter {
 
     private ChristmasPrinterDesignTask getExpectedAnswerDesignTask() {
         return new ChristmasPrinterDesignTask(
-                expectedAnswer,
+                adventOfCodeAnswer.expectedAnswer(),
                 getExpectedAnswerOrder(),
                 getExpectedAnswerFormatter()
         );
