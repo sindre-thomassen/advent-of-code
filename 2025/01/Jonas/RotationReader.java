@@ -1,3 +1,5 @@
+import util.reader.TxtReader;
+
 public class RotationReader extends TxtReader<RotationInstruction> {
 
     public RotationReader(String path, String fileName) {

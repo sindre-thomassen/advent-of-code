@@ -1,3 +1,5 @@
+package util;
+
 import util.christmas_printer.ChristmasPrinter;
 import util.string_formatter.Message;
 import util.string_formatter.replace_placeholder_formatter.CenteredOverwriteFormatter;

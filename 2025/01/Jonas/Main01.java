@@ -1,3 +1,5 @@
+import util.ChristmasPrinter2025;
+
 public class Main01 {
     public static void main(String[] args) {
         ChristmasPrinter2025 christmasPrinter = new ChristmasPrinter2025();
@@ -10,7 +12,7 @@ public class Main01 {
     public static int getTestAnswer() {
         SafeDial safeDial = new SafeDial(50, 0, 99, 0);
 
-        for (RotationInstruction rotationInstruction : new RotationReader("2025/01/Jonas", "InputTestDay1")) {
+        for (RotationInstruction rotationInstruction : new RotationReader("2025/01/Jonas/input", "InputTestDay1")) {
             safeDial.rotate(rotationInstruction);
         }
 
@@ -20,7 +22,7 @@ public class Main01 {
     public static int getPart1Answer() {
         SafeDial safeDial = new SafeDial(50, 0, 99, 0);
 
-        for (RotationInstruction rotationInstruction : new RotationReader("2025/01/Jonas", "Input1And2Day1")) {
+        for (RotationInstruction rotationInstruction : new RotationReader("2025/01/Jonas/input", "Input1Day1")) {
             safeDial.rotate(rotationInstruction);
         }
 
@@ -30,7 +32,7 @@ public class Main01 {
     public static int getPart2Answer() {
         SafeDial safeDial = new SafeDial(50, 0, 99, 0);
 
-        for (RotationInstruction rotationInstruction : new RotationReader("2025/01/Jonas", "Input1And2Day1")) {
+        for (RotationInstruction rotationInstruction : new RotationReader("2025/01/Jonas/input", "Input1Day1")) {
             safeDial.rotate(rotationInstruction);
         }
 
