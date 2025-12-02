@@ -1,13 +1,15 @@
 public class SafeDial {
 
-    private static int numberCount;
+    private static int endClickCount;
+    private static int allClicksCount;
     private int currentPosition;
-    private int minPosition;
-    private int maxPosition;
-    private int numberToCount;
+    private final int minPosition;
+    private final int maxPosition;
+    private final int numberToCount;
 
     public SafeDial(int startingPosition, int minPosition, int maxPosition, int numberToCount) {
-        numberCount = 0;
+        endClickCount = 0;
+        allClicksCount = 0;
         this.currentPosition = startingPosition;
         this.minPosition = minPosition;
         this.maxPosition = maxPosition;
@@ -29,9 +31,10 @@ public class SafeDial {
             } else {
                 currentPosition--;
             }
+            countAllClicksIfMathc();
         }
 
-        countNumberIfMatch();
+        countEndClickIfMatch();
     }
 
     public void turnRight(int steps) {
@@ -41,18 +44,29 @@ public class SafeDial {
             } else {
                 currentPosition++;
             }
+            countAllClicksIfMathc();
         }
 
-        countNumberIfMatch();
+        countEndClickIfMatch();
     }
 
-    private void countNumberIfMatch() {
+    private void countEndClickIfMatch() {
         if (currentPosition == numberToCount) {
-            numberCount++;
+            endClickCount++;
         }
     }
 
-    public int getNumberCount() {
-        return numberCount;
+    private void countAllClicksIfMathc() {
+        if (currentPosition == numberToCount) {
+            allClicksCount++;
+        }
+    }
+
+    public int getEndClickCount() {
+        return endClickCount;
+    }
+
+    public int getAllClicksCount() {
+        return allClicksCount;
     }
 }

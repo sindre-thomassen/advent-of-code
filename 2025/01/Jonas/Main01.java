@@ -3,8 +3,8 @@ public class Main01 {
         ChristmasPrinter2025 christmasPrinter = new ChristmasPrinter2025();
 
 //        christmasPrinter.print(getTestAnswer(), 3);
-        christmasPrinter.print(getPart1Answer(), 989);
-//        christmasPrinter.print(getPart2Answer());
+//        christmasPrinter.print(getPart1Answer(), 989);
+        christmasPrinter.print(getPart2Answer());
     }
 
     public static int getTestAnswer() {
@@ -14,20 +14,26 @@ public class Main01 {
             safeDial.rotate(rotationInstruction);
         }
 
-        return safeDial.getNumberCount();
+        return safeDial.getEndClickCount();
     }
 
     public static int getPart1Answer() {
         SafeDial safeDial = new SafeDial(50, 0, 99, 0);
 
-        for (RotationInstruction rotationInstruction : new RotationReader("2025/01/Jonas", "Input1Day1")) {
+        for (RotationInstruction rotationInstruction : new RotationReader("2025/01/Jonas", "Input1And2Day1")) {
             safeDial.rotate(rotationInstruction);
         }
 
-        return safeDial.getNumberCount();
+        return safeDial.getEndClickCount();
     }
 
     public static int getPart2Answer() {
-        return 0;
+        SafeDial safeDial = new SafeDial(50, 0, 99, 0);
+
+        for (RotationInstruction rotationInstruction : new RotationReader("2025/01/Jonas", "Input1And2Day1")) {
+            safeDial.rotate(rotationInstruction);
+        }
+
+        return safeDial.getAllClicksCount();
     }
 }
