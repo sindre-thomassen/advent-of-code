@@ -20,12 +20,12 @@ public abstract class ChristmasPrinter {
         this.christmasDate = christmasDate;
     }
 
-    public void print(int answer, int expected) {
+    public void print(long answer, long expected) {
         setAdventOfCodeAnswer(answer, expected);
         print();
     }
 
-    public void print(int answer) {
+    public void print(long answer) {
         setAdventOfCodeAnswer(answer);
         print();
     }
@@ -39,11 +39,11 @@ public abstract class ChristmasPrinter {
         System.out.println(getFormattedDesign());
     }
 
-    private void setAdventOfCodeAnswer(int answer) {
+    private void setAdventOfCodeAnswer(long answer) {
         this.adventOfCodeAnswer = new AdventOfCodeAnswer(String.valueOf(answer), defaultAnswer);
     }
 
-    public void setAdventOfCodeAnswer(int answer, int expected) {
+    public void setAdventOfCodeAnswer(long answer, long expected) {
         this.adventOfCodeAnswer = new AdventOfCodeAnswer(String.valueOf(answer), String.valueOf(expected));
     }
 
