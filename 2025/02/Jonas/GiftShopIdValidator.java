@@ -1,6 +1,6 @@
 public class GiftShopIdValidator {
 
-    public static boolean isInvalidId(long id) {
+    public static boolean isInvalidIdPart1(long id) {
         String idString = String.valueOf(id);
         if (idString.length() % 2 == 1) {
             return false;
