@@ -1,24 +1,26 @@
 package util.reader;
 
+import util.FileType;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Iterator;
 
-public abstract class TxtReader<ProcessedLineType> implements Iterable<ProcessedLineType> {
+public abstract class LineReader<ProcessedLineType> implements Iterable<ProcessedLineType> {
 
     private final BufferedReader reader;
 
-    public TxtReader(String path, String fileName) {
+    public LineReader(String path, String fileName, FileType fileType) {
         try {
-            this.reader = new BufferedReader(new FileReader(createFilePath(path, fileName)));
+            this.reader = new BufferedReader(new FileReader(createFilePath(path, fileName, fileType)));
         } catch (IOException e) {
             throw new RuntimeException("Failed to open file", e);
         }
     }
 
-    private String createFilePath(String path, String fileName) {
-        return path + "/" + fileName + ".txt";
+    private String createFilePath(String path, String fileName, FileType fileType) {
+        return path + "/" + fileName + "." + fileType.getSuffix();
     }
 
     protected abstract ProcessedLineType processLine(String line);

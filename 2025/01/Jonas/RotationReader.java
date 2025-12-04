@@ -1,9 +1,10 @@
-import util.reader.TxtReader;
+import util.FileType;
+import util.reader.LineReader;
 
-public class RotationReader extends TxtReader<RotationInstruction> {
+public class RotationReader extends LineReader<RotationInstruction> {
 
-    public RotationReader(String path, String fileName) {
-        super(path, fileName);
+    public RotationReader(String path, String fileName, FileType fileType) {
+        super(path, fileName, fileType);
     }
 
     @Override
