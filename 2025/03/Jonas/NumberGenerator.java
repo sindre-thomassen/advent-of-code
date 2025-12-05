@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,18 +12,11 @@ public class NumberGenerator {
 
         List<Long> numbersToAddUp = new java.util.ArrayList<>(Collections.emptyList());
 
-        for (int i = numbers.size() - 1; i >= 0; i--) {
-            Long number = numbers.get(i);
-
+        for (Long number : numbers) {
             if (numbersToAddUp.size() < numbersOfDigitsToUse) {
-                numbersToAddUp.add(0, number);
-            }
-            else if (number >= numbersToAddUp.get(0)) {
-                long indexOf1stSmallestNumber = numbersToAddUp.stream()
-                        .min(Long::compareTo)
-                        .get();
-                numbersToAddUp.remove(indexOf1stSmallestNumber);
-                numbersToAddUp.add(0, number);
+                numbersToAddUp.add(number);
+            } else {
+                numbersToAddUp = getAdjustedList(numbersToAddUp, number);
             }
         }
 
@@ -30,5 +24,38 @@ public class NumberGenerator {
                 .map(String::valueOf)
                 .collect(Collectors.joining());
         return Long.parseLong(combined);
+    }
+
+    private static List<Long> getAdjustedList(List<Long> largestNumbers, Long number) {
+        List<Long> adjustedList = new ArrayList<>();
+        boolean isAdjusted = false;
+
+        for (int i = 0; i < largestNumbers.size(); i++) {
+            if (isLastLoopIteration(i, largestNumbers.size())) {
+                if (!isAdjusted && largestNumbers.get(i) < number) {
+                    adjustedList.add(number);
+                } else {
+                    adjustedList.add(largestNumbers.get(i));
+                }
+            } else if (!isAdjusted && isNextNumberLarger(i, largestNumbers)) {
+                adjustedList.add(largestNumbers.get(++i));
+                isAdjusted = true;
+            } else {
+                adjustedList.add(largestNumbers.get(i));
+            }
+        }
+        if (isAdjusted) {
+            adjustedList.add(number);
+        }
+
+        return adjustedList;
+    }
+
+    public static boolean isLastLoopIteration(int currentIndex, int listSize) {
+        return currentIndex + 1 == listSize;
+    }
+
+    public static boolean isNextNumberLarger(int currentIndex, List<Long> numbers) {
+        return numbers.get(currentIndex) < numbers.get(currentIndex + 1);
     }
 }
