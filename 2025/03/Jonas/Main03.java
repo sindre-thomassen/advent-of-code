@@ -16,7 +16,7 @@ public class Main03 {
     public static long getAnswerPart1Test(){
         long joltage = 0;
         for (List<Long> batteries : new BatteryBankReader("2025/03/Jonas/input", "Input1Day3Test", FileType.TXT)) {
-            joltage += NumberGenerator.createLargestNumberByOrder(batteries, 2);
+            joltage += BatteryNumberGenerator.generateLargestNumber(batteries, 2);
         }
         return joltage;
     }
@@ -24,7 +24,7 @@ public class Main03 {
     public static long getAnswerPart1(){
         long joltage = 0;
         for (List<Long> batteries : new BatteryBankReader("2025/03/Jonas/input", "Input1Day3", FileType.TXT)) {
-            joltage += NumberGenerator.createLargestNumberByOrder(batteries, 2);
+            joltage += BatteryNumberGenerator.generateLargestNumber(batteries, 2);
         }
         return joltage;
     }
@@ -32,7 +32,7 @@ public class Main03 {
     public static long getAnswerPart2Test(){
         long joltage = 0;
         for (List<Long> batteries : new BatteryBankReader("2025/03/Jonas/input", "Input1Day3Test", FileType.TXT)) {
-            joltage += NumberGenerator.createLargestNumberByOrder(batteries, 12);
+            joltage += BatteryNumberGenerator.generateLargestNumber(batteries, 12);
         }
         return joltage;
     }
@@ -40,7 +40,7 @@ public class Main03 {
     public static long getAnswerPart2(){
         long joltage = 0;
         for (List<Long> batteries : new BatteryBankReader("2025/03/Jonas/input", "Input1Day3", FileType.TXT)) {
-            joltage += NumberGenerator.createLargestNumberByOrder(batteries, 12);
+            joltage += BatteryNumberGenerator.generateLargestNumber(batteries, 12);
         }
         return joltage;
     }
