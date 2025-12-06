@@ -1,4 +1,4 @@
-import util.ChristmasPrinter2025;
+import christmasprinter.designs.ChristmasPrinter2025;
 import util.FileType;
 
 public class Main02 {

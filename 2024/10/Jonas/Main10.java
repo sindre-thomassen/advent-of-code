@@ -1,6 +1,6 @@
-import util.christmas_printer.AdventOfCodeAnswer;
-import util.christmas_printer._2023.ChristmasPrinter2023;
-import util.christmas_printer._2024.ChristmasPrinter2024;
+import christmasprinter.AdventOfCodeAnswer;
+import christmasprinter.designs.ChristmasPrinter2023;
+import christmasprinter.designs.ChristmasPrinter2024;
 
 public class Main10 {
     public static void main(String[] args) {

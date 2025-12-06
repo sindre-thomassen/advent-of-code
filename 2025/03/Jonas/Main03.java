@@ -1,4 +1,4 @@
-import util.ChristmasPrinter2025;
+import christmasprinter.designs.ChristmasPrinter2025;
 import util.FileType;
 
 import java.util.List;
@@ -9,7 +9,7 @@ public class Main03 {
 
 //        christmasPrinter.print(getAnswerPart1Test(), 357);
 //        christmasPrinter.print(getAnswerPart1(), 17383);
-//        christmasPrinter.print(getAnswerPart2Test(), 3121910778619L);
+        christmasPrinter.print(getAnswerPart2Test(), 3121910778619L);
         christmasPrinter.print(getAnswerPart2());
     }
 
