@@ -8,26 +8,26 @@ TEST = False
 with open("inputs/test.txt" if TEST else "inputs/input.txt", "r") as file:
 	lines = [line.strip() for line in file.readlines()]
 
-# joltages = []
+joltages = []
 
-# for line in lines:
-# 	tenner_place = 0
-# 	singles_place = 0
+for line in lines:
+	tenner_place = 0
+	singles_place = 0
 
-# 	for n in line[:-1]:
-# 		if int(n) > tenner_place:
-# 			tenner_place = int(n)
-# 			singles_place = 0
-# 		elif int(n) > singles_place:
-# 			singles_place = int(n)
+	for n in line[:-1]:
+		if int(n) > tenner_place:
+			tenner_place = int(n)
+			singles_place = 0
+		elif int(n) > singles_place:
+			singles_place = int(n)
 
-# 	if int(line[-1])>singles_place:
-# 		singles_place = int(line[-1])
+	if int(line[-1])>singles_place:
+		singles_place = int(line[-1])
 
-# 	joltages.append(tenner_place*10 + singles_place)
+	joltages.append(tenner_place*10 + singles_place)
 
 
-# print(joltages, sum(joltages))
+print(joltages, sum(joltages))
 
 
 

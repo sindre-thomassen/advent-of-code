@@ -70,6 +70,7 @@ def regex_solution(line, pattern="^(\\d+)\\1$"):
 
 ##### Timings #####
 start = t.time()
+PATTERN='^(\\d+)\\1+$'
 print(f"Part 1: {part_1(line)} ({t.time()-start:.2f} seconds)")
 print(f"Part 1 (RegEx): {regex_solution(line)} ({t.time()-start:.2f} seconds)")
-print(f"Part 2: {regex_solution(line, pattern='^(\\d+)\\1+$')} ({t.time()-start:.2f} seconds)")
+print(f"Part 2: {regex_solution(line, pattern=PATTERN)} ({t.time()-start:.2f} seconds)")
