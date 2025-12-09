@@ -51,10 +51,8 @@ new_ranges = []
 while len(ranges)>=1:
 	changed = True
 	next_range = ranges.pop()
-	print(next_range)
 	while changed:
 		changed = False
-		indices_to_remove = []
 
 		for i in range(len(ranges)):
 
@@ -67,7 +65,6 @@ while len(ranges)>=1:
 			changed = True
 			break
 
-		
 
 	new_ranges.append(next_range)
 
