@@ -1,26 +1,14 @@
 package table.character;
 
-import table.Field;
+import table.Row;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class CharRow {
+public class CharRow extends Row<Character> {
 
-    private final List<Field<Character>> fields;
-
-    public CharRow(String string) {
-        fields = new ArrayList<>();
-        for (char character : string.toCharArray()) {
-            fields.add(new Field<>(character));
+    public CharRow(List<Character> characters) {
+        for (Character character : characters) {
+            addValue(character);
         }
-    }
-
-    public List<Field<Character>> getFields() {
-        return fields;
-    }
-
-    public Field<Character> getField(int index) {
-        return fields.get(index);
     }
 }

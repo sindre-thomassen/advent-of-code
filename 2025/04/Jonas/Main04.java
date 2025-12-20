@@ -1,9 +1,7 @@
 import christmasprinter.designs.ChristmasPrinter2025;
 import reader.CharLineReader;
 import reader.FileType;
-import table.character.CharColumn;
-import table.Row;
-import table.Table;
+import table.character.*;
 
 import java.util.List;
 
@@ -14,15 +12,13 @@ public class Main04 {
     }
 
     private static int getAnswerPart1Test() {
-        Table floorTiles = null;
-        for (Row floorTileRow : new CharLineReader("2025/04/Jonas/input", "Input1Test", FileType.TXT)) {
-            if (floorTiles == null) {
-                List<CharColumn> columns = floorTileRow.getFields().stream()
-                        .map(_ -> new CharColumn("dummy name"))
-                        .toList();
-                floorTiles = new Table(columns);
+        CharTable floorTiles = new CharTable("Floor tiles");
+        for (List<Character> floorTileRow : new CharLineReader("2025/04/Jonas/input", "Input1Test", FileType.TXT)) {
+            if (floorTiles.getColumns().isEmpty()) {
+                for (int i = 1; i <= floorTileRow.size(); i++) {
+                    floorTiles.addColumn("Column" + i, ' ');
+                }
             }
-
             floorTiles.addRow(floorTileRow);
         }
         System.out.println(floorTiles);

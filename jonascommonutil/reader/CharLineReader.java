@@ -1,20 +1,17 @@
 package reader;
 
-import table.Row;
-
 import java.util.List;
 
-public class CharLineReader extends LineReader<Row>{
+public class CharLineReader extends LineReader<List<Character>>{
 
     public CharLineReader(String path, String fileName, FileType fileType) {
         super(path, fileName, fileType);
     }
 
     @Override
-    protected Row processLine(String line) {
-        List<Character> characters = line.chars()
+    protected List<Character> processLine(String line) {
+        return line.chars()
                 .mapToObj(character -> (char) character)
                 .toList();
-        return new Row(characters);
     }
 }

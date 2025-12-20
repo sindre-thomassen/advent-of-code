@@ -5,51 +5,53 @@ import stringformatter.Message;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Table {
+public abstract class Table<FieldType> {
 
-    private final List<Column<?>> columns;
+    protected final String name;
+    protected final List<Column<FieldType>> columns;
+    protected final List<Row<FieldType>> rows;
 
-    public Table(List<? extends Column<?>> columns) {
-//        this.columns = (List<Column<?>>) columns;
-        this.columns = new ArrayList<>(columns);
+    protected Table(String name) {
+        this.name = name;
+        this.columns = new ArrayList<>();
+        this.rows = new ArrayList<>();
     }
 
-    public void addRow(Row row) {
-        if (row.getFields().size() != columns.size()) {
-            throw new IllegalArgumentException("Row does not match table columns");
-        }
-        for (int i = 0; i < columns.size(); i++) {
-            Column<?> column = columns.get(i);
-            Field<?> field = row.getField(i);
-            column.addRow(field);
-        }
-    }
-
-    public List<Row> getRows() {
-        List<Row> rows = new ArrayList<>();
-        for (int i = 0; i < columns.size(); i++) {
-            Column<?> column = columns.get(i);
-            if (i == 0) {
-                for (Field<?> field : column.getValues()) {
-                    List<?> fields = List.of(field);
-                    rows.add(new Row(fields));
-                }
-            } else {
-                for (int j = 0; j < column.getValues().size(); j++) {
-                    rows.get(j).addColumn(column.getValues().get(j));
-                }
+    public void addColumn(String name, FieldType defaultValue) {
+        if (!rows.isEmpty()) {
+            for (Row<FieldType> row : rows) {
+                row.addValue(defaultValue);
             }
         }
-        return rows;
+        columns.add(getNewColumn(name));
+    }
+
+    abstract protected Column<FieldType> getNewColumn(String name);
+
+    public void addRow(List<FieldType> values) {
+        if (values.size() != columns.size()) {
+            throw new IllegalArgumentException("Row does not match table columns");
+        }
+        rows.add(getNewRow(values));
+    }
+
+    abstract protected Row<FieldType> getNewRow(List<FieldType> values);
+
+    public List<Column<FieldType>> getColumns() {
+        return columns.stream().toList();
     }
 
     @Override
     public String toString() {
         Message message = Message.create()
-                .appendText("Table{").appendNewLine();
-        for (Row row : getRows()) {
+                .appendText(name).appendNewLine();
+        for (Column<FieldType> column : columns) {
+            message.appendText(column.name).appendText(", ");
+        }
+        message.removeLastIfMatch(", ").appendNewLine();
+        for (Row<FieldType> row : rows) {
             message.appendText(row.toString()).appendNewLine();
         }
-        return message.appendText("}").toString();
+        return message.toString();
     }
 }

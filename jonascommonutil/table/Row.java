@@ -3,31 +3,20 @@ package table;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Row {
+public abstract class Row<FieldType> {
 
-    private final List<Field<?>> fields;
+    private final List<FieldType> values;
 
-    public Row(List<?> values) {
-        this.fields = new ArrayList<>();
-        for (Object value : values) {
-            fields.add(new Field<>(value));
-        }
+    protected Row() {
+        values = new ArrayList<>();
     }
 
-    public List<Field<?>> getFields() {
-        return fields;
-    }
-
-    public Field<?> getField(int index) {
-        return fields.get(index);
-    }
-
-    public void addColumn(Field<?> column) {
-        fields.add(column);
+    public void addValue(FieldType value) {
+        values.add(value);
     }
 
     @Override
     public String toString() {
-        return getFields().toString();
+        return values.toString();
     }
 }
