@@ -40,6 +40,13 @@ public class Message {
         return this;
     }
 
+    public Message removeLastIfMatch(String stringToRemove) {
+        if (this.message.endsWith(stringToRemove)) {
+            this.message = this.message.substring(0, this.message.length() - stringToRemove.length());
+        }
+        return this;
+    }
+
     @Override
     public String toString() {
         return this.message;
